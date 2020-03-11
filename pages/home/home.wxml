@@ -1,0 +1,29 @@
+<camera wx:if="{{src === ''}}"
+style="width:100%; height:{{height}}px;" 
+device-position="{{position}}">
+  <cover-view class="btns-box">
+    <cover-image src="/images/change.png" bindtap="reverse"></cover-image>
+    <cover-image src="/images/camera.png" bindtap="takePhoto"></cover-image>
+    <cover-image src="/images/choose.png" bindtap="choosePhoto"></cover-image>
+  </cover-view>
+</camera>
+
+<view wx:else>
+  <image src="{{src}}" style="height:{{height}}px; width:100%;" mode="aspectFill"></image>
+  <button type="warn" bindtap="reChoose" class="reChoose">再来一次</button>
+
+  <view class="faceinfo" wx:if="{{userinfo.age !== undefined}}">
+    <view class="row">
+      <text>年龄：{{userinfo.age}}岁</text>
+      <text>性别：{{map.gender[userinfo.gender.type]}}</text>
+    </view>
+    <view class="row">
+      <text>颜值：{{userinfo.beauty}}分</text>
+      <text>表情：{{map.expression[userinfo.expression.type]}}</text>
+    </view>
+    <view class="row">
+      <text>眼镜：{{map.glasses[userinfo.glasses.type]}}</text>
+      <text>情绪：{{map.emotion[userinfo.emotion.type]}}</text>
+    </view>
+  </view>
+</view>
